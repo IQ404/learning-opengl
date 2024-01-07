@@ -14,6 +14,7 @@
 #include "Renderer.h"
 #include "VBO.h"
 #include "IndexBuffer.h"
+#include "VAO.h"
 
 struct ShaderProgramSourceCode
 {
@@ -180,14 +181,13 @@ int main(void)
             0,2,3   // upper-half triangle for the rectangle
         };
 
-        unsigned int vao_id;
-        GLCall(glGenVertexArrays(1, &vao_id));
-        GLCall(glBindVertexArray(vao_id));
+        VAO vao;
 
         VBO vbo{ vertices, 4 * 2 * sizeof(float) };
-
-        GLCall(glEnableVertexAttribArray(0));
-        GLCall(glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 2, 0));  // this line links the vbo to the vao at index 0
+        VBOLayout vbo_layout;
+        vbo_layout.AddAttribute<float>(2);
+        
+        vao.LinkVertexBuffer(vbo, vbo_layout);
 
         IndexBuffer index_buffer{ indices, 6 };
 
@@ -200,10 +200,10 @@ int main(void)
         //ASSERT_DebugBreak_MSVC(u_color_id != -1);
 
         //---
-        GLCall(glBindVertexArray(0));
+        vao.Unbind();
         GLCall(glUseProgram(0));
-        GLCall(glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0));
-        GLCall(glBindBuffer(GL_ARRAY_BUFFER, 0));
+        index_buffer.Unbind();
+        vbo.Unbind();
         //---
 
         float r = 0.0f;
@@ -227,7 +227,7 @@ int main(void)
 
             //---
             GLCall(glUseProgram(shader_program_id));
-            GLCall(glBindVertexArray(vao_id));
+            vao.Bind();
             //---
 
             GLCall(glUniform4f(u_color_id, r, 0.3f, 0.8f, 1.0f));
