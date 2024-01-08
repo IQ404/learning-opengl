@@ -1,6 +1,5 @@
 #include "IndexBuffer.h"
-
-#include "Renderer.h"
+#include "DebugTools.h"
 
 IndexBuffer::IndexBuffer(const unsigned int* data, unsigned int count)	// count is the number of indices, bind after initialization
     : m_IndicesCount{ count }

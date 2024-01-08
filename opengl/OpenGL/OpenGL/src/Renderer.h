@@ -1,34 +1,19 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
-// Externel:
+#include "VAO.h"
+#include "IndexBuffer.h"
+#include "Shader.h"
 
-#include <GL/glew.h>        // include this before include gl.h
+class Renderer
+{
 
-// Macros:
 
-/*
-ASSERT_DebugBreak_MSVC(b): break at the current line if b evaluates to false
-    - It is currently MSVC-specific.
-    - Add `;` at the end when using it, as its current definition does not end with `;`.
-*/
-#define ASSERT_DebugBreak_MSVC(b) if (!(b)) __debugbreak()  // __debugbreak is MSVC-specific
+public:
 
-/*
-GLCall(s): calling OpenGL function with error reporting
-    - It is currently MSVC-specific.
-    - It will clear all the previously set OpenGL error flags.
-    - Add `;` at the end when using it, as its current definition does not end with `;`.
-    - Don't write one-line statement using this macro, because its current definition body isn't enclosed with {}.
-*/
-#define GLCall(s)\
-        GLClearErrors();\
-        s;\
-        ASSERT_DebugBreak_MSVC(!(GLErrorLog(#s, __LINE__, __FILE__)))
+    void Clear() const;
 
-void GLClearErrors();
-
-bool GLErrorLog(const char* function_called, int line_calling_from, const char* filepath_calling_from);
-// returns true if there is error; false there isn't.
+    void Draw(const VAO& vao, const IndexBuffer& index_buffer, const Shader& shader_program) const;
+};
 
 #endif // !RENDERER_H
