@@ -1,6 +1,5 @@
 #include "VBO.h"
-
-#include "Renderer.h"
+#include "DebugTools.h"
 
 VBO::VBO(const void* data, unsigned int size)   // size in bytes; bind after initialization
 {

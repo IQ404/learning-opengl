@@ -1,24 +1,23 @@
-#include <iostream>
 #include "Renderer.h"
 
-void GLClearErrors()
+#include <iostream>
+#include "DebugTools.h"
+
+void Renderer::Clear() const
 {
-    while (glGetError() != GL_NO_ERROR);    // GL_NO_ERROR is guaranteed to be 0
+    GLCall(glClear(GL_COLOR_BUFFER_BIT));
 }
 
-bool GLErrorLog(const char* function_called, int line_calling_from, const char* filepath_calling_from)
-// returns true if there is error; false there isn't.
+void Renderer::Draw(const VAO& vao, const IndexBuffer& index_buffer, const Shader& shader_program) const
 {
-    if (GLenum error = glGetError())    // enters if block as long as error != 0
-    {
-        std::cout << "------[OpenGL Error]------" << '\n'
-            << "Error GLenum: " << error << '\n'
-            << "By executing: " << function_called << '\n'
-            << "At line: " << line_calling_from << '\n'
-            << "In file: " << filepath_calling_from << '\n'
-            << "--------------------------" << std::endl;
+    shader_program.Bind();
+    vao.Bind();
+    index_buffer.Bind();
 
-        return true;
-    }
-    return false;
+    /*
+    Currently:
+        - we assume all index buffers contains data of type unsigned int
+        - we assume the only primitive we are drawing is triangle
+    */
+    GLCall(glDrawElements(GL_TRIANGLES, index_buffer.GetIndicesCount(), GL_UNSIGNED_INT, nullptr)); 
 }

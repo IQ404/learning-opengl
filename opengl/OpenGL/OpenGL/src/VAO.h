@@ -18,6 +18,7 @@ public:
 
 	void Unbind() const;
 
+	// TODO: currently our VAO does not support multiple VBOs
 	void LinkVertexBuffer(const VBO& vbo, const VBOLayout& layout);
 };
 

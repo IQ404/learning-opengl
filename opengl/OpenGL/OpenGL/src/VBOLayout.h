@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include "Renderer.h"
+#include "DebugTools.h"
 
 struct VBOAttribute
 {

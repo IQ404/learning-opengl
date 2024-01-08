@@ -1,5 +1,5 @@
 #include "VAO.h"
-#include "Renderer.h"
+#include "DebugTools.h"
 
 VAO::VAO()
 {
@@ -36,7 +36,7 @@ void VAO::LinkVertexBuffer(const VBO& vbo, const VBOLayout& layout)
 	{
 		const auto& attribute = attributes[i];
 		GLCall(glEnableVertexAttribArray(i));
-		GLCall(glVertexAttribPointer(i, attribute.components_count, attribute.opengl_type, attribute.normalized, layout.GetStride(), (const void*)offset));  // this line links the vbo to the vao at index i
+		GLCall(glVertexAttribPointer(i, attribute.components_count, attribute.opengl_type, attribute.normalized, layout.GetStride(), (const void*)offset));  // this line links the vbo to the vao at slot index i
 		offset += attribute.components_count * VBOAttribute::SizeOfOpenGLType(attribute.opengl_type);
 	}
 }
