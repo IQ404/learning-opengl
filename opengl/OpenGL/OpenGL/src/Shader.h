@@ -3,6 +3,7 @@
 
 #include <string>
 #include <unordered_map>
+#include "glm/glm.hpp"
 
 struct ShaderProgramSourceCode
 {
@@ -26,7 +27,11 @@ public:
 
     void Unbind() const;
 
+    void SetUniform_1int(const std::string& u_name, int i1);
+
     void SetUniform_4floats(const std::string& u_name, float f1, float f2, float f3, float f4);
+
+    void SetUniform_float_matrix_4_4(const std::string& u_name, glm::mat4 matrix);
 
 private:
 

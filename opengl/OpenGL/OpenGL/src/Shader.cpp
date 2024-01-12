@@ -15,6 +15,7 @@ Shader::Shader(const std::string& filepath)
 
 Shader::~Shader()
 {
+    Unbind();
     GLCall(glDeleteProgram(m_RendererID));
 }
 
@@ -37,7 +38,7 @@ unsigned int Shader::GetUniformLocation(const std::string& u_name)
     }
     // the uniform's id is not in our cache:
     GLCall(int u_id = glGetUniformLocation(m_RendererID, u_name.c_str()));
-    //ASSERT_DebugBreak_MSVC(u_color_id != -1);
+    //ASSERT_DebugBreak_MSVC(u_id != -1);
     if (u_id == -1)
     {
         std::cout << "Warning: uniform '" << u_name << "' doesn't exist in the shader program." << std::endl;
@@ -48,9 +49,19 @@ unsigned int Shader::GetUniformLocation(const std::string& u_name)
     return u_id;
 }
 
+void Shader::SetUniform_1int(const std::string& u_name, int i1)
+{
+    GLCall(glUniform1i(GetUniformLocation(u_name), i1));
+}
+
 void Shader::SetUniform_4floats(const std::string& u_name, float f1, float f2, float f3, float f4)
 {
     GLCall(glUniform4f(GetUniformLocation(u_name), f1, f2, f3, f4));
+}
+
+void Shader::SetUniform_float_matrix_4_4(const std::string& u_name, glm::mat4 matrix)
+{
+    GLCall(glUniformMatrix4fv(GetUniformLocation(u_name), 1, GL_FALSE, &matrix[0][0]));
 }
 
 ShaderProgramSourceCode Shader::ParseUnifiedShader(const std::string& filepath)
@@ -145,8 +156,8 @@ unsigned int Shader::CreateShaderProgram(const std::string& vertexShader, const 
     GLCall(glDeleteShader(vertex_shader_id));
     GLCall(glDeleteShader(fragment_shader_id));
 
-    //GLCall(glDetachShader(shader_program_id, vertex_shader_id));
-    //GLCall(glDetachShader(shader_program_id, fragment_shader_id));
+    GLCall(glDetachShader(shader_program_id, vertex_shader_id));
+    GLCall(glDetachShader(shader_program_id, fragment_shader_id));
 
     return shader_program_id;
 }
