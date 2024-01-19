@@ -29,7 +29,7 @@ void Shader::Unbind() const
     GLCall(glUseProgram(0));
 }
 
-unsigned int Shader::GetUniformLocation(const std::string& u_name)
+int Shader::GetUniformLocation(const std::string& u_name) const
 {
     if (m_UniformLocationCache.find(u_name) != m_UniformLocationCache.end())
     // the uniform's id is in our cache:

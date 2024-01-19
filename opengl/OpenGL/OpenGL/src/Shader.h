@@ -15,7 +15,7 @@ class Shader
 {
     std::string m_FilePath;
     unsigned int m_RendererID = 0;
-    std::unordered_map<std::string, int> m_UniformLocationCache;
+    mutable std::unordered_map<std::string, int> m_UniformLocationCache;  // a member function marked as const is allowed to modify mutable data members
 
 public:
 
@@ -41,7 +41,7 @@ private:
 
     unsigned int CreateShaderProgram(const std::string& vertexShader, const std::string& fragmentShader);
 
-    unsigned int GetUniformLocation(const std::string& u_name);
+    int GetUniformLocation(const std::string& u_name) const;
 };
 
 #endif // !SHADER_H

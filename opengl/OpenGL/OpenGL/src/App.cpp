@@ -4,21 +4,14 @@
 // Externel:
 #include <GL/glew.h>        // include this before include gl.h
 #include <GLFW/glfw3.h>
-#include "glm/glm.hpp"
-#include "glm/gtc/matrix_transform.hpp"
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw.h"
 #include "imgui/imgui_impl_opengl3.h"
 
 // Internel:
-#include "DebugTools.h"
-#include "VBO.h"
-#include "VBOLayout.h"
-#include "IndexBuffer.h"
-#include "VAO.h"
-#include "Shader.h"
-#include "Renderer.h"
-#include "Texture.h"
+#include "tests/TestMenu.h"
+#include "tests/TestClearColor.h"
+#include "tests/TestTexture2D.h"
 
 int main(void)
 {
@@ -35,7 +28,7 @@ int main(void)
     //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);  // TODO: why context version not working with compatibility mode?
         
     /* Create a windowed mode window and its OpenGL context */
-    GLFWwindow* window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(640, 480, "Learning OpenGL", NULL, NULL);
 
     if (!window)
     {
@@ -68,128 +61,70 @@ int main(void)
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
     
     {
-        float vertices[] =
-        {
-        //  position:         texCoords:
-            -50.0f,-50.0f,    0.0f,0.0f,    // vertex 1
-             50.0f,-50.0f,    1.0f,0.0f,    // vertex 2
-             50.0f, 50.0f,    1.0f,1.0f,    // vertex 3
-            -50.0f, 50.0f,    0.0f,1.0f     // vertex 4
-        };
-
-        unsigned int indices[] =    // OpenGL requires index buffer to store unsigned data!!!
-        {
-            0,1,2,  // lower-half triangle for the rectangle
-            0,2,3   // upper-half triangle for the rectangle
-        };
-
-        GLCall(glEnable(GL_BLEND));
-        GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
-
-        VAO vao;
-
-        VBO vbo{ vertices, 4 * 4 * sizeof(float) };
-        
-        VBOLayout vbo_layout;
-        // position:
-        vbo_layout.AddAttribute<float>(2);
-        // texture coordinates:
-        vbo_layout.AddAttribute<float>(2);
-        
-        vao.LinkVertexBuffer(vbo, vbo_layout);
-
-        IndexBuffer index_buffer{ indices, 6 };
-
-        // view and projection matrix is placing outside the render loop because the location of our camera and what it sees stay unchange for all frames.
-        glm::mat4 view_matrix = glm::translate(glm::mat4{ 1.0f }, glm::vec3{ -320.0f,-240.0f,0.0f });
-        glm::mat4 projection_matrix = glm::ortho(-320.0f, 320.0f, -240.0f, 240.0f, -100.0f, 100.0f); // aspect ratio = 4:3, as we are rendering 640 by 480
-
-        // Experiment with glm projection matrices:
-        /*glm::vec4 v{ 0.0f,0.0f,10.0f,1.0f };
-        glm::vec4 v2{ 0.0f,0.0f,-2.0f,1.0f };
-        glm::mat4 trial_projection_matrix_o = glm::ortho(-1.0f, 1.0f, -1.0f, 1.0f, -10.0f, -5.0f);
-        glm::vec4 result = trial_projection_matrix_o * v;
-        std::cout << "Ortho:\n";
-        std::cout << result.x << ", " << result.y << ", " << result.z << std::endl;
-        glm::mat4 trial_projection_matrix_p = glm::perspective(45.0f, (GLfloat)640 / (GLfloat)480, 1.0f, 2.0f);
-        glm::vec4 result2 = trial_projection_matrix_p * v2;
-        std::cout << "Perspective:\n";
-        std::cout << (result2.x / result2.w) << ", " << (result2.y / result2.w) << ", " << (result2.z / result2.w) << std::endl;*/
-
-        Shader shader{ "res/shaders/Basic.shader" };
-
-        Texture texture{ "res/textures/brush.png" };
-        texture.Bind(0);
-        
-        shader.Bind();
-        shader.SetUniform_1int("u_Texture", 0); // uniform sampler2D is 1 int corresponding to the texture unit (slot)
-
-        // Careful: if we write texture.Unbind(); here, u_Texture will be linked to the default texture object with ID 0!
-
-        Renderer renderer;
+        Renderer global_renderer;
 
         // ImGui Initialization:
         ImGui::CreateContext();
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui::StyleColorsDark();
-        const char* glsl_version = "#version 150";  // If give error, try 130 might help.
+        const char* glsl_version = "#version 130";
         ImGui_ImplOpenGL3_Init(glsl_version);
 
-        float r = 0.0f;
-        float increment = 0.0f;
-        glm::vec3 model_world_coordinates{ 320.0f,240.0f,0.0f };
+        Test::TestBase* current_test = nullptr;
+        Test::TestMenu tests_menu{ current_test };
+        current_test = &tests_menu;
+
+        tests_menu.AddTest<Test::TestClearColor>("Background Color");
+        tests_menu.AddTest<Test::TestTexture2D>("2D Texture");
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
             /* Render here */
 
-            if (r <= 0.0f)
-            {
-                increment = 0.05f;
-            }
-            if (r >= 1.0f)
-            {
-                increment = -0.05f;
-            }
-            r += increment;
+            global_renderer.Clear();
 
-            renderer.Clear();
-
+            // ImGui refresh:
             ImGui_ImplOpenGL3_NewFrame();
             ImGui_ImplGlfw_NewFrame();
             ImGui::NewFrame();
 
-            // model matrix is placing inside the render loop because the location of the object we are rendering can change over frames.
-            glm::mat4 model_matrix = glm::translate(glm::mat4{ 1.0f }, model_world_coordinates);
-
-            glm::mat4 mvp_matrix = projection_matrix * view_matrix * model_matrix;
-
-            shader.Bind();
-            shader.SetUniform_4floats("u_Color", r, 0.3f, 0.8f, 1.0f);
-            shader.SetUniform_float_matrix_4_4("u_MVP", mvp_matrix);
-
-            renderer.Draw(vao, index_buffer, shader);
-
+            if (current_test)   // TODO: do we need to test for nullptr here?
             {
-                ImGui::Begin("Hello, world!");
+                current_test->OnUpdate(0.0f);
+                current_test->OnRender();
 
-                ImGui::SliderFloat3("Model's World Coordinates", &model_world_coordinates.x, 0.0f, 700.0f); // Note: glm::vec3's x,y,z are contiguous in memory // TODO: understand its implementation
-
-                ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);
+                ImGui::Begin("Test");
+                
+                if ((current_test != (&tests_menu)) && (ImGui::Button("<-")))   // Note that we need to put ImGui::Button within the scope between ImGui::Begin and ImGui::End
+                {
+                    delete current_test;
+                    current_test = &tests_menu;
+                }
+                current_test->OnImGuiRender();
                 
                 ImGui::End();
+
+                
             }
 
             ImGui::Render();
             ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
-
+            
             /* Swap front and back buffers */
             glfwSwapBuffers(window);
 
             /* Poll for and process events */
             glfwPollEvents();
+            // TODO: understand why the ImGui window isn't showed up on the canvas at this point in the first iteration of the render loop.
         }
+
+        if (current_test != (&tests_menu))
+        {
+            std::cout << "Closed during testing, deleting the current test..." << std::endl;
+            delete current_test;
+        }
+
     }
 
     ImGui_ImplOpenGL3_Shutdown();

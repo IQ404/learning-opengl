@@ -1,7 +1,7 @@
 #shader vertex
 #version 460 core
 
-layout (location = 0) in vec4 position;	// right now this position is the position after transformed by the view matrix
+layout (location = 0) in vec4 position;	// right now this position is the position in local (object) space in right-handed coordinates.
 /*
 Note that currently location 0 actually feeds in 2 floats.
 It is predefined that OpenGL will set the 1st and 2nd components of the vec4 to these two floats respectively,
@@ -13,12 +13,12 @@ layout (location = 1) in vec2 texCoord;
 
 uniform mat4 u_MVP;
 
-out vec2 v_TexCoord;	// v for varying, as we are interpolating this
+out vec2 v_TexCoord;	// v for varying, as OpenGL is interpolating this after vertex shader and before fragment shader.
 
 void main()
 {
-   gl_Position = u_MVP * position;	// Note that position is right-handed, gl_Position is left-handed
-   v_TexCoord = texCoord;
+    gl_Position = u_MVP * position;	// Note that position is right-handed, gl_Position is left-handed
+    v_TexCoord = texCoord;
 }
 
 #shader fragment

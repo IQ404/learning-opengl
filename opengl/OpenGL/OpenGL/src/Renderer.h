@@ -11,7 +11,7 @@ class Renderer
 
 public:
 
-    void Clear() const;
+    void Clear() const;  // Set the back buffer to black
 
     void Draw(const VAO& vao, const IndexBuffer& index_buffer, const Shader& shader_program) const;
 };

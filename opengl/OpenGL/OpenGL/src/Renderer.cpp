@@ -5,6 +5,7 @@
 
 void Renderer::Clear() const
 {
+    GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
     GLCall(glClear(GL_COLOR_BUFFER_BIT));
 }
 
@@ -12,7 +13,7 @@ void Renderer::Draw(const VAO& vao, const IndexBuffer& index_buffer, const Shade
 {
     shader_program.Bind();
     vao.Bind();
-    index_buffer.Bind();
+    index_buffer.Bind();    // this isn't necessary as long as index_buffer has bound to vao somewhere before this call
 
     /*
     Currently:
