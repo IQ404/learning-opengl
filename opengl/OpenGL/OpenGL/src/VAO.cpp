@@ -3,18 +3,18 @@
 
 VAO::VAO()
 {
-	GLCall(glGenVertexArrays(1, &m_RendererID));
-	//GLCall(glBindVertexArray(m_RendererID));
+	GLCall(glGenVertexArrays(1, &m_VAOID));
+	//GLCall(glBindVertexArray(m_VAOID));
 }
 
 VAO::~VAO()
 {
-	GLCall(glDeleteVertexArrays(1, &m_RendererID));
+	GLCall(glDeleteVertexArrays(1, &m_VAOID));
 }
 
 void VAO::Bind() const
 {
-	GLCall(glBindVertexArray(m_RendererID));
+	GLCall(glBindVertexArray(m_VAOID));
 }
 
 void VAO::Unbind() const

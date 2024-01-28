@@ -13,7 +13,7 @@ void Renderer::Draw(const VAO& vao, const IndexBuffer& index_buffer, const Shade
 {
     shader_program.Bind();
     vao.Bind();
-    index_buffer.Bind();    // this isn't necessary as long as index_buffer has bound to vao somewhere before this call
+    index_buffer.Bind();    // this isn't necessary as long as index_buffer has bound to vao somewhere (and without unbind) before this call
 
     /*
     Currently:

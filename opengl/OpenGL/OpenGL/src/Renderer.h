@@ -8,7 +8,6 @@
 class Renderer
 {
 
-
 public:
 
     void Clear() const;  // Set the back buffer to black

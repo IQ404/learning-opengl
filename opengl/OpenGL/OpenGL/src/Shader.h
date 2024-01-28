@@ -14,7 +14,7 @@ struct ShaderProgramSourceCode
 class Shader
 {
     std::string m_FilePath;
-    unsigned int m_RendererID = 0;
+    unsigned int m_ShaderProgramID = 0;
     mutable std::unordered_map<std::string, int> m_UniformLocationCache;  // a member function marked as const is allowed to modify mutable data members
 
 public:

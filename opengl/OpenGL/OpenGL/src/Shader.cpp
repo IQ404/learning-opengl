@@ -10,18 +10,18 @@ Shader::Shader(const std::string& filepath)
 {
     ShaderProgramSourceCode shader_program_source_code = ParseUnifiedShader(m_FilePath);
 
-    m_RendererID = CreateShaderProgram(shader_program_source_code.VertexShaderSourceCode, shader_program_source_code.FragmentShaderSourceCode);
+    m_ShaderProgramID = CreateShaderProgram(shader_program_source_code.VertexShaderSourceCode, shader_program_source_code.FragmentShaderSourceCode);
 }
 
 Shader::~Shader()
 {
     Unbind();
-    GLCall(glDeleteProgram(m_RendererID));
+    GLCall(glDeleteProgram(m_ShaderProgramID));
 }
 
 void Shader::Bind() const
 {
-    GLCall(glUseProgram(m_RendererID));
+    GLCall(glUseProgram(m_ShaderProgramID));
 }
 
 void Shader::Unbind() const
@@ -37,7 +37,7 @@ int Shader::GetUniformLocation(const std::string& u_name) const
         return m_UniformLocationCache[u_name];
     }
     // the uniform's id is not in our cache:
-    GLCall(int u_id = glGetUniformLocation(m_RendererID, u_name.c_str()));
+    GLCall(int u_id = glGetUniformLocation(m_ShaderProgramID, u_name.c_str()));
     //ASSERT_DebugBreak_MSVC(u_id != -1);
     if (u_id == -1)
     {

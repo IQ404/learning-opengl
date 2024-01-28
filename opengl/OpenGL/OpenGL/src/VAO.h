@@ -6,7 +6,7 @@
 
 class VAO
 {
-	unsigned int m_RendererID;
+	unsigned int m_VAOID;
 
 public:
 

@@ -3,7 +3,7 @@
 
 class VBO
 {
-	unsigned int m_RendererID = 0;
+	unsigned int m_VBOID = 0;
 
 public:
 
