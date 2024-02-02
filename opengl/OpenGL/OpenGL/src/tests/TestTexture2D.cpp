@@ -4,11 +4,13 @@
 
 namespace Test
 {
-	TestTexture2D::TestTexture2D()
-        : m_modelA_world_coordinates{ 320.0f,240.0f,0.0f }, m_modelB_world_coordinates{ 120.0f,40.0f,0.0f }
+	TestTexture2D::TestTexture2D(const std::string& test_name)
+        : m_modelA_world_coordinates{ 320.0f,240.0f,0.0f }, m_modelB_world_coordinates{ 120.0f,40.0f,0.0f },
+        TestBase(test_name)
 	{
         GLCall(glEnable(GL_BLEND));
         GLCall(glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA));
+        GLCall(glBlendEquation(GL_FUNC_ADD));
 
         float vertices[] =
         {
@@ -56,13 +58,18 @@ namespace Test
 
 	TestTexture2D::~TestTexture2D()
 	{
-
+        /*
+        Remember to disable blending with glDisable(GL_BLEND) when it's no longer needed, as leaving it enabled when drawing opaque objects
+        can unnecessarily hurt performance.
+        */
+        GLCall(glDisable(GL_BLEND));
 	}
 
 	void TestTexture2D::OnUpdate(float dt)
 	{
 
 	}
+
 	void TestTexture2D::OnRender()
 	{
         // model matrix is effectively placing inside the render loop because the location of the object we are rendering can change over frames.

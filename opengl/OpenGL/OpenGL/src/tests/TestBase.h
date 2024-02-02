@@ -1,18 +1,25 @@
 #ifndef TESTBASE_H
 #define TESTBASE_H
 
+#include <string>
+
 namespace Test
 {
 
 	class TestBase
 	{
+		std::string m_test_name = "Test";
+
+	protected:
+
+		TestBase(const std::string& test_name)
+		{
+			m_test_name = test_name;
+		}
 
 	public:
 
-		TestBase()
-		{
-
-		}
+		TestBase() = delete;	// we don't want the user to directly construct TestBase
 
 		virtual ~TestBase()
 		{
@@ -32,6 +39,11 @@ namespace Test
 		virtual void OnImGuiRender()
 		{
 
+		}
+
+		std::string GetTestName()	// TODO: should this be virtual?
+		{
+			return m_test_name;
 		}
 
 	};

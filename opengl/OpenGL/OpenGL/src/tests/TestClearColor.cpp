@@ -4,8 +4,9 @@
 
 namespace Test
 {
-	TestClearColor::TestClearColor()
-		: m_BackgroundColor{ 0.2f,0.3f,0.8f,1.0f }
+	TestClearColor::TestClearColor(const std::string& test_name)
+		: m_BackgroundColor{ 0.2f,0.3f,0.8f,1.0f },
+		TestBase(test_name)
 	{
 
 	}

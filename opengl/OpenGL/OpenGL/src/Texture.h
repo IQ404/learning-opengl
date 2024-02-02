@@ -5,12 +5,12 @@
 
 class Texture
 {
-	unsigned int m_RendererID = 0;
+	unsigned int m_TextureObjectID = 0;
 	std::string m_FilePath;
 	unsigned char* m_CPUBuffer = nullptr;
 	int m_Width = 0;
 	int m_Height = 0;
-	int m_BitsPerPixel = 0;
+	int m_BytesPerPixel = 0;
 
 public:
 

@@ -30,7 +30,7 @@ namespace Test
 		std::unique_ptr<Texture> m_Texture;
 
 	public:
-		TestTexture2D();
+		TestTexture2D(const std::string& test_name);
 		~TestTexture2D() override;
 
 		void OnUpdate(float dt) override;

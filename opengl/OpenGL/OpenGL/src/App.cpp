@@ -13,7 +13,7 @@
 #include "tests/TestClearColor.h"
 #include "tests/TestTexture2D.h"
 
-int main(void)
+int main()
 {
     /* Initialize the library */
     if (!glfwInit())
@@ -28,7 +28,7 @@ int main(void)
     //glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_COMPAT_PROFILE);  // TODO: why context version not working with compatibility mode?
         
     /* Create a windowed mode window and its OpenGL context */
-    GLFWwindow* window = glfwCreateWindow(640, 480, "Learning OpenGL", NULL, NULL);
+    GLFWwindow* window = glfwCreateWindow(640*3, 480*3, "Learning OpenGL", NULL, NULL);
 
     if (!window)
     {
@@ -67,7 +67,7 @@ int main(void)
         ImGui::CreateContext();
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui::StyleColorsDark();
-        const char* glsl_version = "#version 130";
+        const char* glsl_version = "#version 130";  // pointing directly to the read-only section of the memory where the compiler allocates storage for string literals
         ImGui_ImplOpenGL3_Init(glsl_version);
 
         Test::TestBase* current_test = nullptr;
@@ -94,7 +94,7 @@ int main(void)
                 current_test->OnUpdate(0.0f);
                 current_test->OnRender();
 
-                ImGui::Begin("Test");
+                ImGui::Begin(current_test->GetTestName().c_str());
                 
                 if ((current_test != (&tests_menu)) && (ImGui::Button("<-")))   // Note that we need to put ImGui::Button within the scope between ImGui::Begin and ImGui::End
                 {
@@ -115,8 +115,9 @@ int main(void)
             glfwSwapBuffers(window);
 
             /* Poll for and process events */
-            glfwPollEvents();
+            glfwPollEvents();   // should we put this at the beginning of the rendering loop?
             // TODO: understand why the ImGui window isn't showed up on the canvas at this point in the first iteration of the render loop.
+
         }
 
         if (current_test != (&tests_menu))
@@ -132,5 +133,4 @@ int main(void)
     ImGui::DestroyContext();
 
     glfwTerminate();
-    return 0;
 }
