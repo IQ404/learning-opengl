@@ -6,19 +6,24 @@
 #include <functional>
 #include <string>
 
+#include <iostream>
+
 namespace Test
 {
 
 	class TestMenu : public TestBase
 	{
 		std::vector< std::pair< std::string, std::function< TestBase* () > > > m_Tests;
-		TestBase*& m_CurrentTest;
+		TestBase*& m_CurrentTest;	// we want to directly modify an external pointer
 
 	public:
 
 		TestMenu(TestBase*& currentTestPointer);
 
-		// We currently aren't overriding the virtual destructor because all data members are on stack
+		virtual ~TestMenu() override
+		{
+			std::cout << "Destroying the menu...\n";
+		}
 
 		void OnImGuiRender() override;
 

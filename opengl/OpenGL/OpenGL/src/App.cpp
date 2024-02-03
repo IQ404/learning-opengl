@@ -95,8 +95,9 @@ int main()
                 current_test->OnRender();
 
                 ImGui::Begin(current_test->GetTestName().c_str());
+                //ImGui::Begin("Test");
                 
-                if ((current_test != (&tests_menu)) && (ImGui::Button("<-")))   // Note that we need to put ImGui::Button within the scope between ImGui::Begin and ImGui::End
+                if ((current_test != (&tests_menu)) && (ImGui::Button("<-back to tests menu")))   // Note that we need to put ImGui::Button within the scope between ImGui::Begin and ImGui::End
                 {
                     delete current_test;
                     current_test = &tests_menu;
@@ -122,7 +123,7 @@ int main()
 
         if (current_test != (&tests_menu))
         {
-            std::cout << "Closed during testing, deleting the current test..." << std::endl;
+            std::cout << "Closed during testing, deleting the current test...\n" << std::endl;
             delete current_test;
         }
 

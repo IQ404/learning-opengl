@@ -13,7 +13,7 @@ namespace Test
 
 	TestClearColor::~TestClearColor()
 	{
-
+		// TODO: recover the Clear Color
 	}
 
 	void TestClearColor::OnUpdate(float dt)
