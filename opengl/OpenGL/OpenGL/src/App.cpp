@@ -9,9 +9,7 @@
 #include "imgui/imgui_impl_opengl3.h"
 
 // Internel:
-#include "tests/TestMenu.h"
-#include "tests/TestClearColor.h"
-#include "tests/TestTexture2D.h"
+#include "tests/TestHeaders.h"
 
 int main()
 {
@@ -67,7 +65,7 @@ int main()
         ImGui::CreateContext();
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui::StyleColorsDark();
-        const char* glsl_version = "#version 130";  // pointing directly to the read-only section of the memory where the compiler allocates storage for string literals
+        const char* glsl_version = "#version 460";  // pointing directly to the read-only section of the memory where the compiler allocates storage for string literals
         ImGui_ImplOpenGL3_Init(glsl_version);
 
         Test::TestBase* current_test = nullptr;
@@ -76,12 +74,15 @@ int main()
 
         tests_menu.AddTest<Test::TestClearColor>("Background Color");
         tests_menu.AddTest<Test::TestTexture2D>("2D Texture");
+        tests_menu.AddTest<Test::TestSmoothstepTexture>("Smoothstep Texture");
+        tests_menu.AddTest<Test::TestStepSmoothstepMix>("step/smoothstep/mix");
+        tests_menu.AddTest<Test::TestGrid>("Grid");
+        tests_menu.AddTest<Test::TestTVScanLines>("TV Scan Lines");
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
         {
             /* Render here */
-
             global_renderer.Clear();
 
             // ImGui refresh:
@@ -105,7 +106,6 @@ int main()
                 current_test->OnImGuiRender();
                 
                 ImGui::End();
-
                 
             }
 

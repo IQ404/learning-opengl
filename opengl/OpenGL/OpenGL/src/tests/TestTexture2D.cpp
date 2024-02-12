@@ -45,7 +45,7 @@ namespace Test
         m_view_matrix = glm::translate(glm::mat4{ 1.0f }, glm::vec3{ -320.0f,-240.0f,0.0f });
         m_projection_matrix = glm::ortho(-320.0f, 320.0f, -240.0f, 240.0f, -100.0f, 100.0f); // aspect ratio = 4:3, as we are rendering 640 by 480
 
-        m_shader = std::make_unique<Shader>("res/shaders/Basic.shader");
+        m_shader = std::make_unique<Shader>("res/shaders/Texture2D.shader");
 
         m_Texture = std::make_unique<Texture>("res/textures/brush.png");
         m_Texture->Bind(0);

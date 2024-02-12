@@ -34,14 +34,22 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\stb_image\stb_image.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
+    <ClCompile Include="src\tests\TestGrid.cpp" />
     <ClCompile Include="src\tests\TestMenu.cpp" />
+    <ClCompile Include="src\tests\TestSmoothstepTexture.cpp" />
+    <ClCompile Include="src\tests\TestStepSmoothstepMix.cpp" />
     <ClCompile Include="src\tests\TestTexture2D.cpp" />
+    <ClCompile Include="src\tests\TestTVScanLines.cpp" />
     <ClCompile Include="src\Texture.cpp" />
     <ClCompile Include="src\VAO.cpp" />
     <ClCompile Include="src\VBO.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Basic.shader" />
+    <None Include="res\shaders\Grid.shader" />
+    <None Include="res\shaders\SmoothstepTexture.shader" />
+    <None Include="res\shaders\StepSmoothstepMix.shader" />
+    <None Include="res\shaders\Texture2D.shader" />
+    <None Include="res\shaders\TVScanLines.shader" />
     <None Include="src\glm\detail\func_common.inl" />
     <None Include="src\glm\detail\func_common_simd.inl" />
     <None Include="src\glm\detail\func_exponential.inl" />
@@ -478,8 +486,13 @@
     <ClInclude Include="src\stb_image\stb_image.h" />
     <ClInclude Include="src\tests\TestBase.h" />
     <ClInclude Include="src\tests\TestClearColor.h" />
+    <ClInclude Include="src\tests\TestGrid.h" />
+    <ClInclude Include="src\tests\TestHeaders.h" />
     <ClInclude Include="src\tests\TestMenu.h" />
+    <ClInclude Include="src\tests\TestSmoothstepTexture.h" />
+    <ClInclude Include="src\tests\TestStepSmoothstepMix.h" />
     <ClInclude Include="src\tests\TestTexture2D.h" />
+    <ClInclude Include="src\tests\TestTVScanLines.h" />
     <ClInclude Include="src\Texture.h" />
     <ClInclude Include="src\VAO.h" />
     <ClInclude Include="src\VBO.h" />
@@ -487,6 +500,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\brush.png" />
+    <Image Include="res\textures\channel_test.png" />
+    <Image Include="res\textures\flipping_test.png" />
+    <Image Include="res\textures\squirrel.png" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>

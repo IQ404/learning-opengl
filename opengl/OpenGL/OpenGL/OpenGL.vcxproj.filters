@@ -75,9 +75,21 @@
     <ClCompile Include="src\tests\TestTexture2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\TestSmoothstepTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestStepSmoothstepMix.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestGrid.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestTVScanLines.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\shaders\Basic.shader" />
+    <None Include="res\shaders\Texture2D.shader" />
     <None Include="src\glm\detail\func_common.inl">
       <Filter>Header Files</Filter>
     </None>
@@ -486,6 +498,10 @@
     <None Include="src\glm\gtx\wrap.inl">
       <Filter>Header Files</Filter>
     </None>
+    <None Include="res\shaders\SmoothstepTexture.shader" />
+    <None Include="res\shaders\StepSmoothstepMix.shader" />
+    <None Include="res\shaders\Grid.shader" />
+    <None Include="res\shaders\TVScanLines.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1400,9 +1416,33 @@
     <ClInclude Include="src\tests\TestTexture2D.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="src\tests\TestSmoothstepTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestStepSmoothstepMix.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestGrid.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestHeaders.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestTVScanLines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="res\textures\brush.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\channel_test.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\flipping_test.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="res\textures\squirrel.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>
