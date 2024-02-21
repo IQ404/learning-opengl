@@ -22,7 +22,7 @@ namespace Test
 
 		virtual ~TestMenu() override
 		{
-			std::cout << "Destroying the menu...\n";
+			std::cout << "\nDestroying the menu...\n";
 		}
 
 		void OnImGuiRender() override;

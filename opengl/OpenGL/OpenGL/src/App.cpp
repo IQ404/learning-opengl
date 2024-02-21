@@ -46,7 +46,7 @@ int main()
     }
 
     /* V-Sync */
-    glfwSwapInterval(1);
+    glfwSwapInterval(0);
 
     //---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -65,7 +65,7 @@ int main()
         ImGui::CreateContext();
         ImGui_ImplGlfw_InitForOpenGL(window, true);
         ImGui::StyleColorsDark();
-        const char* glsl_version = "#version 460";  // pointing directly to the read-only section of the memory where the compiler allocates storage for string literals
+        const char* glsl_version = "#version 460 core";  // pointing directly to the read-only section of the memory where the compiler allocates storage for string literals
         ImGui_ImplOpenGL3_Init(glsl_version);
 
         Test::TestBase* current_test = nullptr;
@@ -75,9 +75,15 @@ int main()
         tests_menu.AddTest<Test::TestClearColor>("Background Color");
         tests_menu.AddTest<Test::TestTexture2D>("2D Texture");
         tests_menu.AddTest<Test::TestSmoothstepTexture>("Smoothstep Texture");
-        tests_menu.AddTest<Test::TestStepSmoothstepMix>("step/smoothstep/mix");
+        tests_menu.AddTest<Test::TestStepSmoothstepMix>("step, smoothstep, mix");
         tests_menu.AddTest<Test::TestGrid>("Grid");
         tests_menu.AddTest<Test::TestTVScanLines>("TV Scan Lines");
+        tests_menu.AddTest<Test::TestAmbient>("Ambient/Hemisphere Lighting");
+        tests_menu.AddTest<Test::TestLambertian>("Lambertian Lighting & sRGB Correction");
+        tests_menu.AddTest<Test::TestPhong>("A Hacky Phong/Blinn-Phong Shading");
+        tests_menu.AddTest<Test::TestSkybox>("Skybox");
+        tests_menu.AddTest<Test::TestEnvironmentMapping>("Environment Mapping & Fresnel Effect");
+        tests_menu.AddTest<Test::TestCelShading>("Cel Shading");
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))
@@ -123,7 +129,7 @@ int main()
 
         if (current_test != (&tests_menu))
         {
-            std::cout << "Closed during testing, deleting the current test...\n" << std::endl;
+            std::cout << "\nClosed during testing, deleting the current test..." << std::endl;
             delete current_test;
         }
 

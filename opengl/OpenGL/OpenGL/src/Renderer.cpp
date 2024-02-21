@@ -6,7 +6,7 @@
 void Renderer::Clear() const
 {
     GLCall(glClearColor(0.0f, 0.0f, 0.0f, 1.0f));
-    GLCall(glClear(GL_COLOR_BUFFER_BIT));
+    GLCall(glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT));
 }
 
 void Renderer::Draw(const VAO& vao, const IndexBuffer& index_buffer, const Shader& shader_program) const
@@ -21,4 +21,12 @@ void Renderer::Draw(const VAO& vao, const IndexBuffer& index_buffer, const Shade
         - we assume the only primitive we are drawing is triangle
     */
     GLCall(glDrawElements(GL_TRIANGLES, index_buffer.GetIndicesCount(), GL_UNSIGNED_INT, nullptr)); 
+}
+
+void Renderer::LinearDraw(const VAO& vao, const Shader& shader_program, const unsigned int& count) const
+{
+    shader_program.Bind();
+    vao.Bind();
+
+    GLCall(glDrawArrays(GL_TRIANGLES, 0, count));
 }
