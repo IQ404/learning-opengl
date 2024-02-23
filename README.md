@@ -10,7 +10,17 @@ This repository stores the projects I did when I wrote [my study notes on OpenGL
 
 ### Vertices Manipulation
 
-// Code already exists in repository, demo GIF coming soon!
+https://github.com/IQ404/learning-opengl/assets/68409685/7a8a2ecd-8c7c-42b8-a58a-f15c86386ffc
+
+https://github.com/IQ404/learning-opengl/assets/68409685/72203f33-4c3b-41ba-802e-2d2d60219ce8
+
+https://github.com/IQ404/learning-opengl/assets/68409685/bb30bdc0-4236-41de-ad10-5b87d1db4c2b
+
+https://github.com/IQ404/learning-opengl/assets/68409685/ab312d12-ae95-4632-8474-438f28499c3a
+
+https://github.com/IQ404/learning-opengl/assets/68409685/338e69db-07d6-4359-8433-368ab44a171f
+
+https://github.com/IQ404/learning-opengl/assets/68409685/f079d26a-a408-4dd3-8051-2614f09f7554
 
 ### Cel Shading
 
