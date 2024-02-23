@@ -44,6 +44,10 @@ https://github.com/IQ404/learning-opengl/assets/68409685/f079d26a-a408-4dd3-8051
 
 <img src="https://github.com/IQ404/learning-opengl/blob/main/opengl/gallery/graph%20drawer%20with%20grid.png"></a>
 
+### A Better Grid
+
+<img src="https://github.com/IQ404/learning-opengl/blob/main/opengl/gallery/better_grid.png"></a>
+
 ### Smoothstep Filter
 
 Before filtering:
