@@ -8,6 +8,10 @@ This repository stores the projects I did when I wrote [my study notes on OpenGL
 
 // Coming soon!
 
+### Vertices Manipulation
+
+// Coming soon!
+
 ### Cel Shading
 
 <img src="https://github.com/IQ404/learning-opengl/blob/main/opengl/gallery/Cel%20Shading.png"></a>
