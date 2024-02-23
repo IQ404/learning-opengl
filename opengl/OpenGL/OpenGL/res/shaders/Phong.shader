@@ -1,24 +1,45 @@
 #shader vertex
 #version 460 core
 
-layout (location = 0) in vec4 position;	// right now this position is the position in local (object) space in right-handed coordinates.
+layout (location = 0) in vec3 position;	// right now this position is the position in local (object) space in right-handed coordinates.
 
 layout (location = 1) in vec2 texCoord;
 layout (location = 2) in vec3 normal;
 
 uniform mat4 u_MVP;
 uniform mat4 u_Model;
+uniform float u_TimePassed;
 
 out vec2 v_TexCoord;	// v for varying, as OpenGL is interpolating this after vertex shader and before fragment shader.
 out vec3 v_Normal;
 out vec3 v_WorldPosition;
 
+mat3 rotateY(float radians)
+{
+    float sine = sin(radians);
+    float cosine = cos(radians);
+
+    return mat3(
+        cosine, 0.0, sine,
+        0.0, 1.0, 0.0,
+        -sine, 0.0, cosine
+        );
+}
+
 void main()
 {
-    gl_Position = u_MVP * position;	// Note that position is right-handed, gl_Position is left-handed
+    vec3 local_space_position = position;
+    vec3 local_space_normal = normal;
+
+    //local_space_position = rotateY(u_TimePassed) * local_space_position;
+    //vec3 local_space_normal = rotateY(u_TimePassed) * local_space_normal;
+    
+    local_space_position.x += sin(u_TimePassed);
+
+    gl_Position = u_MVP * vec4(local_space_position, 1.0);	// Note that position is right-handed, gl_Position is left-handed
     v_TexCoord = texCoord;
-    v_Normal = (u_Model * vec4(normal, 0.0)).xyz;
-    v_WorldPosition = (u_Model * position).xyz;
+    v_Normal = (u_Model * vec4(local_space_normal, 0.0)).xyz;
+    v_WorldPosition = (u_Model * vec4(local_space_position, 1.0)).xyz;
 }
 
 #shader fragment

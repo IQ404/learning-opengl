@@ -108,6 +108,15 @@
     <ClCompile Include="src\tests\TestCelShading.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="src\tests\TestOffsetScalingRotation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestEasingAnimation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\tests\TestRipplingSphere.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="res\shaders\Texture2D.shader" />
@@ -529,6 +538,9 @@
     <None Include="res\shaders\Phong.shader" />
     <None Include="res\shaders\EnvironmentMapping.shader" />
     <None Include="res\shaders\CelShading.shader" />
+    <None Include="res\shaders\OffsetScalingRotation.shader" />
+    <None Include="res\shaders\EasingAnimation.shader" />
+    <None Include="res\shaders\RipplingSphere.shader" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Renderer.h">
@@ -1480,6 +1492,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="src\tests\TestCelShading.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestOffsetScalingRotation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestEasingAnimation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="src\tests\TestRipplingSphere.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

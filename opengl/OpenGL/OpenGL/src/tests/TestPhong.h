@@ -29,6 +29,7 @@ namespace Test
 		float m_y_rotation = 0.0f;
 		float m_shininess = 32.0f;
 		bool m_blinn = false;
+		float time_passed = 0.0f;
 
 	public:
 		TestPhong(const std::string& test_name);

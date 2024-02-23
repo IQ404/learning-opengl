@@ -60,7 +60,7 @@ void main()
 {
     vec3 normal = normalize(v_Normal);  // this needs to be normalized because it has been interpolated.
 
-    vec3 material_albedo = vec3(0.5);
+    vec3 material_albedo = vec3(0.214);
 
     vec3 sky_light = vec3(0.0, 0.3, 0.6);
     vec3 ground_light = vec3(0.6, 0.3, 0.1);

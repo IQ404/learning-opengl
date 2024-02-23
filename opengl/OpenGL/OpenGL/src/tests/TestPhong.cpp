@@ -84,6 +84,9 @@ namespace Test
         m_shader->SetUniform_float_matrix_4_4("u_Model", m_model_matrix);
         m_shader->SetUniform_1float("u_Shininess", m_shininess);
         m_shader->SetUniform_1int("u_Blinn", (int)m_blinn);
+
+        time_passed += 1.0f / ImGui::GetIO().Framerate;
+        m_shader->SetUniform_1float("u_TimePassed", time_passed);
 	}
 
 	void TestPhong::OnRender()

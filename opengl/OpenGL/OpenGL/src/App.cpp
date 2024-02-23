@@ -84,6 +84,9 @@ int main()
         tests_menu.AddTest<Test::TestSkybox>("Skybox");
         tests_menu.AddTest<Test::TestEnvironmentMapping>("Environment Mapping & Fresnel Effect");
         tests_menu.AddTest<Test::TestCelShading>("Cel Shading");
+        tests_menu.AddTest<Test::TestOffsetScalingRotation>("Offset/Scaling/Rotation");
+        tests_menu.AddTest<Test::TestEasingAnimation>("Model Animation using Easing Functions");
+        tests_menu.AddTest<Test::TestRipplingSphere>("Rippling Sphere");
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))

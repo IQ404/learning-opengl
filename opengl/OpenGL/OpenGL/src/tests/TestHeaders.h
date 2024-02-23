@@ -15,5 +15,8 @@
 #include <tests/TestSkybox.h>
 #include <tests/TestEnvironmentMapping.h>
 #include <tests/TestCelShading.h>
+#include <tests/TestOffsetScalingRotation.h>
+#include <tests/TestEasingAnimation.h>
+#include <tests/TestRipplingSphere.h>
 
 #endif // !TESTHEADERS_H

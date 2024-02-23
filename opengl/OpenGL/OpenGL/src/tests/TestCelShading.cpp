@@ -73,7 +73,9 @@ namespace Test
 
 	void TestCelShading::OnUpdate(float dt)
 	{
-        
+        m_model_shader->Bind();
+        time_passed += 1.0f / ImGui::GetIO().Framerate;
+        m_model_shader->SetUniform_1float("u_TimePassed", time_passed);
 	}
 
 	void TestCelShading::OnRender()

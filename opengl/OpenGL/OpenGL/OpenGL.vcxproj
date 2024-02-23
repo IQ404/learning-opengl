@@ -37,11 +37,14 @@
     <ClCompile Include="src\tests\TestAmbient.cpp" />
     <ClCompile Include="src\tests\TestCelShading.cpp" />
     <ClCompile Include="src\tests\TestClearColor.cpp" />
+    <ClCompile Include="src\tests\TestEasingAnimation.cpp" />
     <ClCompile Include="src\tests\TestEnvironmentMapping.cpp" />
     <ClCompile Include="src\tests\TestGrid.cpp" />
     <ClCompile Include="src\tests\TestLambertian.cpp" />
     <ClCompile Include="src\tests\TestMenu.cpp" />
+    <ClCompile Include="src\tests\TestOffsetScalingRotation.cpp" />
     <ClCompile Include="src\tests\TestPhong.cpp" />
+    <ClCompile Include="src\tests\TestRipplingSphere.cpp" />
     <ClCompile Include="src\tests\TestSkybox.cpp" />
     <ClCompile Include="src\tests\TestSmoothstepTexture.cpp" />
     <ClCompile Include="src\tests\TestStepSmoothstepMix.cpp" />
@@ -54,10 +57,13 @@
   <ItemGroup>
     <None Include="res\shaders\Ambient.shader" />
     <None Include="res\shaders\CelShading.shader" />
+    <None Include="res\shaders\EasingAnimation.shader" />
     <None Include="res\shaders\EnvironmentMapping.shader" />
     <None Include="res\shaders\Grid.shader" />
     <None Include="res\shaders\Lambertian.shader" />
+    <None Include="res\shaders\OffsetScalingRotation.shader" />
     <None Include="res\shaders\Phong.shader" />
+    <None Include="res\shaders\RipplingSphere.shader" />
     <None Include="res\shaders\Skybox.shader" />
     <None Include="res\shaders\SmoothstepTexture.shader" />
     <None Include="res\shaders\StepSmoothstepMix.shader" />
@@ -503,12 +509,15 @@
     <ClInclude Include="src\tests\TestBase.h" />
     <ClInclude Include="src\tests\TestCelShading.h" />
     <ClInclude Include="src\tests\TestClearColor.h" />
+    <ClInclude Include="src\tests\TestEasingAnimation.h" />
     <ClInclude Include="src\tests\TestEnvironmentMapping.h" />
     <ClInclude Include="src\tests\TestGrid.h" />
     <ClInclude Include="src\tests\TestHeaders.h" />
     <ClInclude Include="src\tests\TestLambertian.h" />
     <ClInclude Include="src\tests\TestMenu.h" />
+    <ClInclude Include="src\tests\TestOffsetScalingRotation.h" />
     <ClInclude Include="src\tests\TestPhong.h" />
+    <ClInclude Include="src\tests\TestRipplingSphere.h" />
     <ClInclude Include="src\tests\TestSkybox.h" />
     <ClInclude Include="src\tests\TestSmoothstepTexture.h" />
     <ClInclude Include="src\tests\TestStepSmoothstepMix.h" />
