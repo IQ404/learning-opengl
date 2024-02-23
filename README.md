@@ -56,7 +56,7 @@ After filtering:
 
 ### TV Scan Lines
 
-<img src="https://github.com/IQ404/learning-opengl/blob/main/opengl/gallery/TV%20Scan%20Lines%20Filter.png"></a>
+https://github.com/IQ404/learning-opengl/assets/68409685/f8328651-207b-462a-ba7b-e1bcc07e2069
 
 ### Blinn-Phong
 
