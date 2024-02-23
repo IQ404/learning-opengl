@@ -4,6 +4,10 @@ This repository stores the projects I did when I wrote [my study notes on OpenGL
 
 ## Gallery
 
+### Cel Shading
+
+<img src="https://github.com/IQ404/learning-opengl/blob/main/opengl/gallery/Cel%20Shading.png"></a>
+
 ### 2D SDF
 
 // Coming soon!
@@ -23,10 +27,6 @@ https://github.com/IQ404/learning-opengl/assets/68409685/ab312d12-ae95-4632-8474
 https://github.com/IQ404/learning-opengl/assets/68409685/338e69db-07d6-4359-8433-368ab44a171f
 
 https://github.com/IQ404/learning-opengl/assets/68409685/f079d26a-a408-4dd3-8051-2614f09f7554
-
-### Cel Shading
-
-<img src="https://github.com/IQ404/learning-opengl/blob/main/opengl/gallery/Cel%20Shading.png"></a>
 
 ### Environment Mapping
 
