@@ -10,7 +10,7 @@ This repository stores the projects I did when I wrote [my study notes on OpenGL
 
 ### Vertices Manipulation
 
-// Coming soon!
+// Code already exists in repository, demo GIF coming soon!
 
 ### Cel Shading
 
