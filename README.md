@@ -16,6 +16,8 @@ https://github.com/IQ404/learning-opengl/assets/68409685/72203f33-4c3b-41ba-802e
 
 https://github.com/IQ404/learning-opengl/assets/68409685/bb30bdc0-4236-41de-ad10-5b87d1db4c2b
 
+https://github.com/IQ404/learning-opengl/assets/68409685/09cd95b5-a283-4b6c-b5bd-7b1b3b4414dc
+
 https://github.com/IQ404/learning-opengl/assets/68409685/ab312d12-ae95-4632-8474-438f28499c3a
 
 https://github.com/IQ404/learning-opengl/assets/68409685/338e69db-07d6-4359-8433-368ab44a171f
