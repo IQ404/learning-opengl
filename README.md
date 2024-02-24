@@ -10,7 +10,7 @@ This repository stores the projects I did when I wrote [my study notes on OpenGL
 
 ### 2D SDF
 
-// Coming soon!
+https://github.com/IQ404/learning-opengl/assets/68409685/40484dbe-05d1-4153-8a62-12587fb6c370
 
 ### Vertices Manipulation
 
