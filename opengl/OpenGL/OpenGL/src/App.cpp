@@ -87,6 +87,7 @@ int main()
         tests_menu.AddTest<Test::TestOffsetScalingRotation>("Offset/Scaling/Rotation");
         tests_menu.AddTest<Test::TestEasingAnimation>("Model Animation using Easing Functions");
         tests_menu.AddTest<Test::TestRipplingSphere>("Rippling Sphere");
+        tests_menu.AddTest<Test::TestSDF2D>("2D SDF");
 
         /* Loop until the user closes the window */
         while (!glfwWindowShouldClose(window))

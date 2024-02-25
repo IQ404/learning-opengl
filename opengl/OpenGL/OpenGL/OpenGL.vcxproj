@@ -45,6 +45,7 @@
     <ClCompile Include="src\tests\TestOffsetScalingRotation.cpp" />
     <ClCompile Include="src\tests\TestPhong.cpp" />
     <ClCompile Include="src\tests\TestRipplingSphere.cpp" />
+    <ClCompile Include="src\tests\TestSDF2D.cpp" />
     <ClCompile Include="src\tests\TestSkybox.cpp" />
     <ClCompile Include="src\tests\TestSmoothstepTexture.cpp" />
     <ClCompile Include="src\tests\TestStepSmoothstepMix.cpp" />
@@ -64,6 +65,7 @@
     <None Include="res\shaders\OffsetScalingRotation.shader" />
     <None Include="res\shaders\Phong.shader" />
     <None Include="res\shaders\RipplingSphere.shader" />
+    <None Include="res\shaders\SDF2D.shader" />
     <None Include="res\shaders\Skybox.shader" />
     <None Include="res\shaders\SmoothstepTexture.shader" />
     <None Include="res\shaders\StepSmoothstepMix.shader" />
@@ -518,6 +520,7 @@
     <ClInclude Include="src\tests\TestOffsetScalingRotation.h" />
     <ClInclude Include="src\tests\TestPhong.h" />
     <ClInclude Include="src\tests\TestRipplingSphere.h" />
+    <ClInclude Include="src\tests\TestSDF2D.h" />
     <ClInclude Include="src\tests\TestSkybox.h" />
     <ClInclude Include="src\tests\TestSmoothstepTexture.h" />
     <ClInclude Include="src\tests\TestStepSmoothstepMix.h" />

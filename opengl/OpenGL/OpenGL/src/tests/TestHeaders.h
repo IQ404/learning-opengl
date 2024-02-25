@@ -18,5 +18,6 @@
 #include <tests/TestOffsetScalingRotation.h>
 #include <tests/TestEasingAnimation.h>
 #include <tests/TestRipplingSphere.h>
+#include <tests/TestSDF2D.h>
 
 #endif // !TESTHEADERS_H
