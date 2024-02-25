@@ -12,6 +12,8 @@ This repository stores the projects I did when I wrote [my study notes on OpenGL
 
 https://github.com/IQ404/learning-opengl/assets/68409685/40484dbe-05d1-4153-8a62-12587fb6c370
 
+https://github.com/IQ404/learning-opengl/assets/68409685/27f61645-b51f-4009-bef9-959be4aa72d8
+
 ### Vertices Manipulation
 
 https://github.com/IQ404/learning-opengl/assets/68409685/7a8a2ecd-8c7c-42b8-a58a-f15c86386ffc
